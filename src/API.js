@@ -1,7 +1,7 @@
 import axios from 'axios';
 import RouteActions from './actions/RouteActions';
-import UserActions from '../actions/UserActions';
-import ServerActions form '../actions/ServerActions';
+import UserActions from './actions/UserActions';
+import ServerActions from './actions/ServerActions';
 
 const API = {
   register(user) {
