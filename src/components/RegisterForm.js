@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserActions from '../actions/UserActions';
 
 export default class RegisterForm extends Component {
   constructor() {
@@ -11,6 +12,7 @@ export default class RegisterForm extends Component {
     }
 
     this._onInputChange = this._onInputChange.bind(this);
+    this._submit = this._submit.bind(this);
   }
 
   _onInputChange(e) {
@@ -26,23 +28,66 @@ export default class RegisterForm extends Component {
     });
   }
 
+  _submit(e) {
+    e.preventDefault();
+    let { username, password1, password2 } = this.state;
+    if (password1 !== password2) {
+      this.setState({
+        password1: '',
+        password2: ''
+      })
+      return alert('Passwords do not match, try again.');
+    }
+
+    let user = {
+      username,
+      password: password1
+    };
+
+    UserActions.register(user);
+  }
+
   render() {
     let { username, password1, password2 } = this.state;
 
     return (
       <div>
-        <form>
+        <form onSubmit={this._submit}>
           <div className="form-group">
-            <label>Email address</label>
-            <input type="text" className="form-control" placeholder="Username" value={username} data-statekey='username' onChange={this._onInputChange}/>
+            <label>Username</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Username"
+              required
+              value={username}
+              data-statekey='username'
+              onChange={this._onInputChange}
+            />
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" className="form-control" placeholder="Password" value={password1} data-statekey='password1' onChange={this._onInputChange}/>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              required
+              value={password1}
+              data-statekey='password1'
+              onChange={this._onInputChange}
+            />
           </div>
           <div className="form-group">
             <label>Password (again)</label>
-            <input type="password" className="form-control" placeholder="Password" value={password2} data-statekey='password2' onChange={this._onInputChange}/>
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              required
+              value={password2}
+              data-statekey='password2'
+              onChange={this._onInputChange}
+            />
           </div>
           <button type="submit" className="btn btn-default">Submit</button>
         </form>

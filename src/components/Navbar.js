@@ -20,6 +20,7 @@ export default class Navbar extends Component {
             <ul className="nav navbar-nav navbar-right">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/register">Register</Link></li>
+              <li><Link to="/login">Login</Link></li>
             </ul>
           </div>
         </div>
