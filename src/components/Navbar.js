@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import UserStore from '../stores/UserStore';
+import UserWelcome from './UserWelcome';
 
 export default class Navbar extends Component {
   constructor() {
@@ -30,12 +31,6 @@ export default class Navbar extends Component {
   render() {
     let { profile } = this.state;
 
-    let Welcome = <p></p>
-
-    if (profile) {
-      Welcome = <p className="navbar-text">Signed in as {profile.username}</p>
-    }
-
     return (
       <div>
       <nav className="navbar navbar-default navbar-static-top">
@@ -50,7 +45,7 @@ export default class Navbar extends Component {
             <Link className="navbar-brand" to="/">React App</Link>
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            {Welcome}
+            <UserWelcome profile={profile} />
             <ul className="nav navbar-nav navbar-right">
               <li><Link to="/">Home</Link></li>
               <li><Link to="/register">Register</Link></li>
