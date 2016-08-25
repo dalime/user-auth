@@ -6,7 +6,8 @@ const UserActions = {
   },
   login(attempt) {
     API.login(attempt);
-  }
+  },
+  getProfile: API.getProfile
 };
 
 export default UserActions;
