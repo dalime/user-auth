@@ -7,6 +7,8 @@ import Splash from './components/Splash';
 import RegisterPage from './components/RegisterPage';
 import LoginPage from './components/LoginPage';
 
+import UserStore from './stores/UserStore';
+
 render((
   <Router history={browserHistory}>
     <Route path='/' component={Layout}>
