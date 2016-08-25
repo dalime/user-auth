@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import UserStore from '../stores/UserStore';
 import UserWelcome from './UserWelcome';
+import UserActions from '../actions/UserActions';
 
 export default class Navbar extends Component {
   constructor() {
@@ -12,6 +13,7 @@ export default class Navbar extends Component {
     }
 
     this._onChange = this._onChange.bind(this);
+    this._logout = this._logout.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +28,10 @@ export default class Navbar extends Component {
     this.setState({
       profile: UserStore.get()
     });
+  }
+
+  _logout() {
+    UserActions.logout();
   }
 
   render() {
@@ -50,6 +56,7 @@ export default class Navbar extends Component {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/register">Register</Link></li>
               <li><Link to="/login">Login</Link></li>
+              <li><a onClick={this._logout} style={{cursor:'pointer'}}>Logout</a></li>
             </ul>
           </div>
         </div>

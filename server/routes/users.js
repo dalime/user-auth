@@ -37,7 +37,7 @@ router.get('/profile', User.authMiddleware, (req, res) => { //route hits middlew
 })
 
 // LOG OUT USER
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   res.clearCookie('authtoken').send();
 })
 
