@@ -14,7 +14,10 @@ export default class UserStore extends EventEmitter {
         case Constants.RECEIVE_PROFILE:
           _profile = action.profile;
           this.emit('CHANGE');
-          console.log ('_profile:', _profile);
+          break;
+        case Constants.REMOVE_PROFILE:
+          _profile = null;
+          this.emit('CHANGE');
           break;
       }
     });

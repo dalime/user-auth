@@ -1,13 +1,10 @@
 import API from '../API';
 
 const UserActions = {
-  register(user) {
-    API.register(user);
-  },
-  login(attempt) {
-    API.login(attempt);
-  },
-  getProfile: API.getProfile
+  register: API.register,
+  login: API.login,
+  getProfile: API.getProfile,
+  logout: API.logout
 };
 
 export default UserActions;

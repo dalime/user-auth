@@ -21,6 +21,12 @@ const API = {
       .catch(console.error);
   },
 
+  logout() {
+    axios.post('/api/users/logout')
+      .then(ServerActions.removeProfile)
+      .catch(console.error);
+  },
+
   getProfile() {
     axios.get('/api/users/profile')
       .then(res => res.data)
